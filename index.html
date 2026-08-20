@@ -53,7 +53,7 @@
   }
 
   header {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 
   .eyebrow {
@@ -81,15 +81,67 @@
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin: 0 0 12px;
+    margin: 0;
     color: #ffffff;
   }
 
-  .sub {
-    font-size: 15px;
+  /* Section Styling */
+  .section-block {
+    margin-bottom: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+
+  .section-number {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .instruction-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    font-size: 14.5px;
     color: var(--text-secondary);
-    max-width: 620px;
     line-height: 1.6;
+  }
+
+  .instruction-card code {
+    font-family: var(--mono);
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13.5px;
   }
 
   .toolbar {
@@ -98,10 +150,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    margin: 32px 0 20px;
-    background: var(--surface);
-    padding: 12px 16px;
-    border-radius: var(--radius);
+    margin-bottom: 16px;
+    background: var(--bg);
+    padding: 10px 14px;
+    border-radius: 8px;
     border: 1px solid var(--border);
   }
 
@@ -110,12 +162,8 @@
     align-items: center;
     gap: 8px;
     font-family: var(--mono);
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--text-secondary);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 5px 14px 5px 10px;
   }
 
   .dot {
@@ -137,24 +185,24 @@
   .right-tools {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .updated {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--text-muted);
   }
 
   button.refresh {
     font-family: var(--sans);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12.5px;
     background: var(--accent);
     color: #0f172a;
     border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 6px 14px;
+    border-radius: 6px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -163,23 +211,17 @@
   }
   button.refresh:hover {
     background: #7dd3fc;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
-  }
-  button.refresh:active {
-    transform: translateY(0);
   }
   button.refresh svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
 
-  .group {
-    background: var(--surface);
+  .table-container {
+    background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
   }
 
   table {
@@ -194,26 +236,21 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--text-muted);
-    padding: 14px 20px;
+    padding: 12px 18px;
     border-bottom: 1px solid var(--border);
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(255, 255, 255, 0.02);
   }
 
   td {
-    padding: 14px 20px;
+    padding: 12px 18px;
     border-bottom: 1px solid var(--border);
     font-family: var(--mono);
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--text-primary);
-    transition: background 0.15s ease;
   }
 
   tr:last-child td {
     border-bottom: none;
-  }
-
-  tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
   }
 
   tr.occupied td {
@@ -231,9 +268,9 @@
     align-items: center;
     gap: 6px;
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 999px;
   }
 
@@ -250,15 +287,15 @@
   }
 
   .badge .bdot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: currentColor;
   }
 
   footer {
     margin-top: 40px;
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--text-muted);
     border-top: 1px solid var(--border);
     padding-top: 20px;
@@ -270,28 +307,23 @@
     background: var(--surface);
     border: 1px solid var(--border);
     color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 5px;
-    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11.5px;
   }
 
   .loading, .error {
     font-family: var(--mono);
-    font-size: 13.5px;
-    padding: 32px 20px;
+    font-size: 13px;
+    padding: 24px 18px;
     text-align: center;
   }
-  .loading {
-    color: var(--text-secondary);
-  }
-  .error {
-    color: #f87171;
-    background: var(--err-bg);
-  }
+  .loading { color: var(--text-secondary); }
+  .error { color: #f87171; background: var(--err-bg); }
 
   @media (max-width: 640px) {
     .wrap { padding: 32px 16px; }
-    td, th { padding: 12px 14px; }
+    td, th { padding: 10px 12px; }
     .toolbar { flex-direction: column; align-items: stretch; }
     .right-tools { justify-content: space-between; }
   }
@@ -302,28 +334,41 @@
   <header>
     <div class="eyebrow">Shop-Floor Portal · Demo</div>
     <h1>DEMO Galvanizing DWI User Testing Guide</h1>
-    <div class="sub">Live status of test accounts in the employees table. An account is marked Occupied once its PIN has been changed from the initial value — pick any account still marked Available.</div>
   </header>
 
-  <div class="toolbar">
-    <div class="status"><span class="dot" id="statusDot"></span><span id="statusText">connecting…</span></div>
-    <div class="right-tools">
-      <span class="updated" id="lastUpdated">last checked —</span>
-      <button class="refresh" id="refreshBtn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
-        Refresh
-      </button>
+  <!-- SECTION 01: LOGIN -->
+  <section class="section-block">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Login Instructions</h2>
     </div>
-  </div>
+    
+    <div class="instruction-card">
+      Please select an available <strong>Employee ID</strong> from the status table below to log in. Use the initial PIN: <code>1234</code>
+    </div>
 
-  <div class="group">
-    <div id="content">
-      <div class="loading">Fetching current status…</div>
+    <div class="toolbar">
+      <div class="status">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">connecting…</span>
+      </div>
+      <div class="right-tools">
+        <span class="updated" id="lastUpdated">last checked —</span>
+        <button class="refresh" id="refreshBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+          Refresh
+        </button>
+      </div>
     </div>
-  </div>
+
+    <div class="table-container">
+      <div id="content">
+        <div class="loading">Fetching current status…</div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    Occupied = PIN no longer matches the initial value, meaning the account has already been used.<br>
     Source: <code id="srcUrl"></code>/rest/v1/employees — read-only, anon key.
   </footer>
 </div>
