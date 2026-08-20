@@ -165,9 +165,10 @@
   .privacy-note {
     margin-top: 8px;
     font-size: 12.5px;
-    color: var(--text-muted);
+    color: #cbd5e1; /* 原为 var(--text-muted)，现已大幅提升亮度和清晰度 */
     border-top: 1px dashed var(--border);
     padding-top: 8px;
+    line-height: 1.5;
   }
 
   /* List & Grid Formatting for Roles & Devices */
@@ -421,8 +422,7 @@
     <div class="eyebrow">Shop-Floor Portal · Demo</div>
     <h1>DEMO Galvanizing DWI User Testing Guide</h1>
   </header>
-
-  <!-- SECTION 01: LOGIN -->
+<!-- SECTION 01: LOGIN -->
   <section class="section-block">
     <div class="section-header">
       <div class="header-left">
@@ -434,7 +434,7 @@
     <div class="instruction-card">
       <div>Select any <strong>Available</strong> Employee ID from the table below for your testing log in. Initial PIN is <code>1234</code>. You will be prompted to set a new PIN on first login, which dynamically updates its status to <strong>Occupied</strong> in this table.</div>
       <div class="privacy-note">
-        * Note: Some Employee IDs in the table use real employee ID numbers for ease of memory. The cloud relational database only stores these numeric IDs and contains no sensitive personal information such as employee names.
+        <span style="color: #fbbf24; font-weight: 600;">* Note:</span> Some Employee IDs in the table use real employee ID numbers for ease of memory. The cloud relational database only stores these numeric IDs and contains no sensitive personal information such as employee names.
       </div>
     </div>
 
@@ -458,7 +458,6 @@
       </div>
     </div>
   </section>
-
   <!-- SECTION 02: ROLES & PERMISSIONS -->
   <section class="section-block">
     <div class="section-header">
