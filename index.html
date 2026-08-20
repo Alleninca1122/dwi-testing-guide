@@ -170,39 +170,63 @@
     padding-top: 8px;
   }
 
-  /* List & Grid Formatting for Roles */
-  .role-grid {
+  /* List & Grid Formatting for Roles & Devices */
+  .role-grid, .device-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 10px;
     margin-bottom: 12px;
   }
 
-  .role-card {
+  .role-card, .device-card {
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 10px 12px;
+    padding: 12px;
   }
 
-  .role-name {
+  .role-name, .device-title {
     font-family: var(--mono);
     font-size: 13px;
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .role-desc {
+  .role-desc, .device-desc {
     font-size: 12.5px;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
-  .role-desc em {
+  .role-desc em, .device-desc em {
     color: var(--text-primary);
     font-style: normal;
     font-weight: 500;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-family: var(--sans);
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .responsive-list {
+    margin: 8px 0 0 0;
+    padding-left: 18px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+  }
+
+  .responsive-list li {
+    margin-bottom: 4px;
   }
 
   .toolbar {
@@ -387,7 +411,7 @@
     td, th { padding: 6px 10px; }
     .toolbar { flex-direction: column; align-items: stretch; }
     .right-tools { justify-content: space-between; }
-    .role-grid { grid-template-columns: 1fr; }
+    .role-grid, .device-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -465,7 +489,23 @@
       <span style="color:var(--amber); font-size:12.5px; display:inline-block; margin-top:4px;">* Note: Record modification features are currently under development and not available for testing yet.</span>
     </div>
   </section>
+<!-- SECTION 03: OPTIMAL TESTING EXPERIENCE -->
+  <section class="section-block">
+    <div class="section-header">
+      <div class="header-left">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Devices for Optimal Testing Experience</h2>
+      </div>
+    </div>
 
+    <div class="instruction-card" style="margin-bottom:0;">
+      This DWI system is standardly engineered for <strong>15.6″–21.5″ Industrial Touch PCs (1080p)</strong> and <strong>10.5″–12.9″ Rugged Tablets/iPads</strong>. 
+      <br><br>
+      For the best evaluation experience, testing on <strong>desktop PCs, laptops, tablets, or iPads</strong> is highly recommended. The interface automatically adapts with touch-friendly controls and crisp SVG engineering diagrams.
+      <br><br>
+      <span style="color:var(--amber); font-size:12.5px;">* Note: While fully functional on smartphones, the testing experience may be less optimal due to compact screen size limitations.</span>
+    </div>
+  </section>
   <footer>
     Source: <code id="srcUrl"></code>/rest/v1/employees — read-only, anon key.
   </footer>
