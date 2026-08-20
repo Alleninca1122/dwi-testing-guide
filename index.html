@@ -4,247 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DEMO Galvanizing DWI User Testing Guide</title>
-<!-- 引入高质感字体: Inter + JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
   :root {
     --bg: #0f172a;
     --surface: #1e293b;
-    --surface-hover: #273549;
+    --surface-card: #0f172a;
     --border: #334155;
-    --border-light: rgba(255, 255, 255, 0.08);
+    --border-light: #1e293b;
     
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --text-dim: #64748b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --accent: #38bdf8;
+    --ok: #10b981;
+    --ok-bg: rgba(16, 185, 129, 0.12);
+    --amber: #f59e0b;
+    --amber-bg: rgba(245, 158, 11, 0.12);
+    --err: #ef4444;
+    --err-bg: rgba(239, 68, 68, 0.12);
 
-    --primary: #38bdf8;
-    --primary-glow: rgba(56, 189, 248, 0.15);
-    
-    --success: #10b981;
-    --success-bg: rgba(16, 185, 129, 0.12);
-    --success-border: rgba(16, 185, 129, 0.25);
-    
-    --warning: #f59e0b;
-    --warning-bg: rgba(245, 158, 11, 0.12);
-    --warning-border: rgba(245, 158, 11, 0.28);
-    
-    --danger: #ef4444;
-    --danger-bg: rgba(239, 68, 68, 0.12);
-
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+    --radius: 12px;
   }
 
   * { box-sizing: border-box; }
-
+  
   body {
     margin: 0;
-    min-height: 100vh;
     background-color: var(--bg);
     background-image: 
-      radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.07) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
-      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
-    font-family: var(--font-sans);
-    color: var(--text-main);
-    padding: 40px 20px 80px;
+      radial-gradient(at 50% 0%, rgba(56, 189, 248, 0.05) 0px, transparent 70%),
+      radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
+    font-family: var(--sans);
+    color: var(--text-primary);
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
 
   .wrap {
-    max-width: 960px;
+    max-width: 800px;
     margin: 0 auto;
+    padding: 64px 24px 96px;
   }
 
-  /* Header */
   header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 16px;
+    margin-bottom: 32px;
   }
 
-  .title-block h1 {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-    margin: 0 0 6px;
-    color: #fff;
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-
-  .title-block .sub {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-muted);
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
   }
 
-  /* Status Pill & Live Indicator */
-  .status-pill {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    padding: 6px 14px;
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    color: #ffffff;
+  }
+
+  .sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 32px 0 20px;
     background: var(--surface);
+    padding: 12px 16px;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
-    border-radius: 9999px;
+  }
+
+  .status {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 5px 14px 5px 10px;
   }
 
   .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--text-dim);
+    background: var(--text-muted);
     transition: all 0.3s ease;
   }
-
   .dot.live {
-    background: var(--success);
-    box-shadow: 0 0 10px var(--success);
-    animation: pulse 2s infinite ease-in-out;
+    background: var(--ok);
+    box-shadow: 0 0 10px var(--ok);
   }
-
   .dot.err {
-    background: var(--danger);
-    box-shadow: 0 0 10px var(--danger);
+    background: var(--err);
+    box-shadow: 0 0 10px var(--err);
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-  }
-
-  /* Meta Bar */
-  .meta-row {
+  .right-tools {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-family: var(--font-mono);
+    gap: 16px;
+  }
+
+  .updated {
+    font-family: var(--mono);
     font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 12px;
+    color: var(--text-muted);
   }
 
   button.refresh {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 500;
-    background: var(--surface);
-    color: var(--text-main);
-    border: 1px solid var(--border);
-    padding: 7px 16px;
-    border-radius: 6px;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--accent);
+    color: #0f172a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
   }
-
   button.refresh:hover {
-    background: var(--surface-hover);
-    border-color: var(--primary);
-    color: #fff;
+    background: #7dd3fc;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
   }
-
   button.refresh:active {
     transform: translateY(0);
   }
-
-  /* Summary Dashboard Cards */
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 14px;
-    margin-bottom: 32px;
+  button.refresh svg {
+    width: 14px;
+    height: 14px;
   }
 
-  .summary .cell {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .summary .cell:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .summary .cell .lbl {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-
-  .summary .cell .num {
-    font-family: var(--font-mono);
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .summary .cell.occ .num {
-    color: var(--warning);
-  }
-
-  /* Group Container */
   .group {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 24px;
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
   }
 
-  .group h2 {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--primary);
-    padding: 12px 18px;
-    margin: 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* Modern Table */
   table {
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--font-mono);
-    font-size: 13px;
     text-align: left;
   }
 
@@ -252,17 +192,19 @@
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--text-dim);
-    padding: 10px 18px;
-    background: rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: 14px 20px;
     border-bottom: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.6);
   }
 
   td {
-    padding: 12px 18px;
-    border-bottom: 1px solid var(--border-light);
-    color: var(--text-main);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 13.5px;
+    color: var(--text-primary);
     transition: background 0.15s ease;
   }
 
@@ -278,100 +220,111 @@
     background: rgba(245, 158, 11, 0.03);
   }
 
-  tr.occupied td:first-child {
-    border-left: 3px solid var(--warning);
+  td.role {
+    text-transform: capitalize;
+    font-family: var(--sans);
+    color: var(--text-secondary);
   }
 
-  tr:not(.occupied) td:first-child {
-    border-left: 3px solid transparent;
-  }
-
-  /* Status Badges */
   .badge {
     display: inline-flex;
     align-items: center;
-    font-size: 11px;
+    gap: 6px;
+    font-family: var(--sans);
+    font-size: 12px;
     font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 6px;
-    letter-spacing: 0.3px;
+    padding: 4px 12px;
+    border-radius: 999px;
   }
 
-  .badge.no {
-    background: var(--success-bg);
-    color: var(--success);
-    border: 1px solid var(--success-border);
+  .badge.available {
+    background: var(--ok-bg);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.2);
   }
 
-  .badge.yes {
-    background: var(--warning-bg);
-    color: var(--warning);
-    border: 1px solid var(--warning-border);
+  .badge.occupied {
+    background: var(--amber-bg);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.2);
   }
 
-  /* Loading & Error States */
-  .loading, .error {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    padding: 36px 20px;
-    text-align: center;
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 10px;
-    color: var(--text-muted);
+  .badge .bdot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
   }
 
-  .error {
-    color: var(--danger);
-    background: var(--danger-bg);
-    border-color: var(--danger);
-  }
-
-  /* Footer */
   footer {
     margin-top: 40px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    line-height: 1.7;
-    color: var(--text-dim);
+    font-size: 13px;
+    color: var(--text-muted);
     border-top: 1px solid var(--border);
     padding-top: 20px;
+    line-height: 1.7;
   }
 
-  #srcUrl {
-    color: var(--text-muted);
+  footer code {
+    font-family: var(--mono);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  .loading, .error {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    padding: 32px 20px;
+    text-align: center;
+  }
+  .loading {
+    color: var(--text-secondary);
+  }
+  .error {
+    color: #f87171;
+    background: var(--err-bg);
+  }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 32px 16px; }
+    td, th { padding: 12px 14px; }
+    .toolbar { flex-direction: column; align-items: stretch; }
+    .right-tools { justify-content: space-between; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="title-block">
-      <h1>DEMO Galvanizing DWI User Testing Guide</h1>
-      <div class="sub">DEMO Galvanizing DWI — employees table, live</div>
-    </div>
-    <div class="status-pill"><span class="dot" id="statusDot"></span><span id="statusText">connecting…</span></div>
+    <div class="eyebrow">Shop-Floor Portal · Demo</div>
+    <h1>DEMO Galvanizing DWI User Testing Guide</h1>
+    <div class="sub">Live status of test accounts in the employees table. An account is marked Occupied once its PIN has been changed from the initial value — pick any account still marked Available.</div>
   </header>
 
-  <div class="meta-row">
-    <span id="lastUpdated">last checked: —</span>
-    <button class="refresh" id="refreshBtn">↻ Refresh Data</button>
+  <div class="toolbar">
+    <div class="status"><span class="dot" id="statusDot"></span><span id="statusText">connecting…</span></div>
+    <div class="right-tools">
+      <span class="updated" id="lastUpdated">last checked —</span>
+      <button class="refresh" id="refreshBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+        Refresh
+      </button>
+    </div>
   </div>
 
-  <div class="summary" id="summary" style="display:none;">
-    <div class="cell"><div class="lbl">Total accounts</div><div class="num" id="sumTotal">0</div></div>
-    <div class="cell occ"><div class="lbl">Occupied</div><div class="num" id="sumOccupied">0</div></div>
-    <div class="cell"><div class="lbl">Available</div><div class="num" id="sumFree">0</div></div>
-    <div class="cell"><div class="lbl">Roles</div><div class="num" id="sumRoles">0</div></div>
-  </div>
-
-  <div id="content">
-    <div class="loading">Fetching current PIN status from Supabase…</div>
+  <div class="group">
+    <div id="content">
+      <div class="loading">Fetching current status…</div>
+    </div>
   </div>
 
   <footer>
-    <strong>Occupied</strong> = PIN differs from the initial value (1234), meaning the account has been used and its forced first-login PIN change has occurred.<br>
-    Source: <span id="srcUrl"></span>/rest/v1/employees — read-only, anon key, RLS is currently disabled on this table.
+    Occupied = PIN no longer matches the initial value, meaning the account has already been used.<br>
+    Source: <code id="srcUrl"></code>/rest/v1/employees — read-only, anon key.
   </footer>
 </div>
 
@@ -385,15 +338,12 @@
   const statusText = document.getElementById("statusText");
   const content = document.getElementById("content");
   const lastUpdated = document.getElementById("lastUpdated");
-  const summary = document.getElementById("summary");
-
-  const roleOrder = ["admin", "supervisor", "operator"];
 
   async function fetchAccounts(){
     dot.className = "dot";
     statusText.textContent = "connecting…";
     try{
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/employees?select=employee_id,pin,role&order=role.asc,employee_id.asc`, {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/employees?select=employee_id,pin,role&order=employee_id.asc`, {
         headers: {
           "apikey": ANON_KEY,
           "Authorization": `Bearer ${ANON_KEY}`
@@ -404,55 +354,34 @@
       render(rows);
       dot.className = "dot live";
       statusText.textContent = "live";
-      lastUpdated.textContent = "last checked: " + new Date().toLocaleString();
+      lastUpdated.textContent = "last checked " + new Date().toLocaleTimeString();
     }catch(err){
       dot.className = "dot err";
       statusText.textContent = "connection failed";
-      content.innerHTML = `<div class="error">Could not reach the database: ${err.message}. Check network access and that the employees table is still readable.</div>`;
+      content.innerHTML = `<div class="error">Could not reach the database: ${err.message}. Open this file directly in a browser (not inside a sandboxed preview) with network access to supabase.co.</div>`;
     }
   }
 
   function render(rows){
-    const occupied = r => r.pin !== "1234";
-    const total = rows.length;
-    const occCount = rows.filter(occupied).length;
-    const roles = [...new Set(rows.map(r => r.role))];
+    const isOccupied = r => r.pin !== "1234";
 
-    document.getElementById("sumTotal").textContent = total;
-    document.getElementById("sumOccupied").textContent = occCount;
-    document.getElementById("sumFree").textContent = total - occCount;
-    document.getElementById("sumRoles").textContent = roles.length;
-    summary.style.display = "grid";
-
-    const grouped = {};
-    rows.forEach(r => {
-      if(!grouped[r.role]) grouped[r.role] = [];
-      grouped[r.role].push(r);
-    });
-
-    const orderedRoles = [
-      ...roleOrder.filter(r => grouped[r]),
-      ...Object.keys(grouped).filter(r => !roleOrder.includes(r))
-    ];
-
-    content.innerHTML = orderedRoles.map(role => {
-      const list = grouped[role];
-      const rowsHtml = list.map(r => {
-        const occ = occupied(r);
-        return `<tr class="${occ ? 'occupied' : ''}">
-          <td>${r.employee_id}</td>
-          <td>${occ ? r.pin + " (changed)" : "1234"}</td>
-          <td><span class="badge ${occ ? 'yes' : 'no'}">${occ ? "Occupied" : "Available"}</span></td>
-        </tr>`;
-      }).join("");
-      return `<div class="group">
-        <h2>${role} (${list.length})</h2>
-        <table>
-          <thead><tr><th>Employee ID</th><th>Initial PIN</th><th>Status</th></tr></thead>
-          <tbody>${rowsHtml}</tbody>
-        </table>
-      </div>`;
+    const rowsHtml = rows.map(r => {
+      const occ = isOccupied(r);
+      return `<tr class="${occ ? 'occupied' : ''}">
+        <td>${r.employee_id}</td>
+        <td class="role">${r.role}</td>
+        <td>
+          <span class="badge ${occ ? 'occupied' : 'available'}">
+            <span class="bdot"></span>${occ ? 'Occupied' : 'Available'}
+          </span>
+        </td>
+      </tr>`;
     }).join("");
+
+    content.innerHTML = `<table>
+      <thead><tr><th>Employee ID</th><th>Role</th><th>Status</th></tr></thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>`;
   }
 
   document.getElementById("refreshBtn").addEventListener("click", fetchAccounts);
