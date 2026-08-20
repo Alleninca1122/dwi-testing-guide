@@ -29,7 +29,7 @@
 
     --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     --mono: "JetBrains Mono", monospace;
-    --radius: 12px;
+    --radius: 10px;
   }
 
   * { box-sizing: border-box; }
@@ -49,36 +49,36 @@
   .wrap {
     max-width: 800px;
     margin: 0 auto;
-    padding: 64px 24px 96px;
+    padding: 36px 20px 48px;
   }
 
   header {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
 
   .eyebrow {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
   .eyebrow::before {
     content: "";
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: var(--accent);
     border-radius: 50%;
   }
 
   h1 {
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.02em;
     margin: 0;
@@ -87,36 +87,36 @@
 
   /* Section Styling */
   .section-block {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 24px;
+    padding: 16px 18px;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
   }
 
   .section-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 12px;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
+    padding-bottom: 8px;
   }
 
   .section-number {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--accent);
     background: rgba(56, 189, 248, 0.1);
     border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 2px 8px;
-    border-radius: 6px;
+    padding: 1px 6px;
+    border-radius: 4px;
   }
 
   .section-title {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     color: #ffffff;
     margin: 0;
@@ -127,21 +127,21 @@
   .instruction-card {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 24px;
-    font-size: 14.5px;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.5;
   }
 
   .instruction-card code {
     font-family: var(--mono);
     color: var(--accent);
     background: rgba(56, 189, 248, 0.1);
-    padding: 2px 6px;
+    padding: 1px 5px;
     border-radius: 4px;
-    font-size: 13.5px;
+    font-size: 12.5px;
   }
 
   .toolbar {
@@ -149,78 +149,78 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 10px;
     background: var(--bg);
-    padding: 10px 14px;
-    border-radius: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
     border: 1px solid var(--border);
   }
 
   .status {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--text-secondary);
   }
 
   .dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--text-muted);
     transition: all 0.3s ease;
   }
   .dot.live {
     background: var(--ok);
-    box-shadow: 0 0 10px var(--ok);
+    box-shadow: 0 0 8px var(--ok);
   }
   .dot.err {
     background: var(--err);
-    box-shadow: 0 0 10px var(--err);
+    box-shadow: 0 0 8px var(--err);
   }
 
   .right-tools {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
   }
 
   .updated {
     font-family: var(--mono);
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--text-muted);
   }
 
   button.refresh {
     font-family: var(--sans);
     font-weight: 600;
-    font-size: 12.5px;
+    font-size: 12px;
     background: var(--accent);
     color: #0f172a;
     border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 4px 10px;
+    border-radius: 5px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     transition: all 0.2s ease;
   }
   button.refresh:hover {
     background: #7dd3fc;
   }
   button.refresh svg {
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
   }
 
   .table-container {
     background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
   }
 
@@ -231,21 +231,21 @@
   }
 
   th {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--text-muted);
-    padding: 12px 18px;
+    padding: 8px 14px;
     border-bottom: 1px solid var(--border);
     background: rgba(255, 255, 255, 0.02);
   }
 
   td {
-    padding: 12px 18px;
+    padding: 6px 14px;
     border-bottom: 1px solid var(--border);
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--text-primary);
   }
 
@@ -266,11 +266,11 @@
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-family: var(--sans);
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 600;
-    padding: 3px 10px;
+    padding: 2px 8px;
     border-radius: 999px;
   }
 
@@ -294,12 +294,12 @@
   }
 
   footer {
-    margin-top: 40px;
-    font-size: 12.5px;
+    margin-top: 24px;
+    font-size: 11.5px;
     color: var(--text-muted);
     border-top: 1px solid var(--border);
-    padding-top: 20px;
-    line-height: 1.7;
+    padding-top: 14px;
+    line-height: 1.6;
   }
 
   footer code {
@@ -307,23 +307,23 @@
     background: var(--surface);
     border: 1px solid var(--border);
     color: var(--accent);
-    padding: 2px 6px;
+    padding: 1px 5px;
     border-radius: 4px;
-    font-size: 11.5px;
+    font-size: 11px;
   }
 
   .loading, .error {
     font-family: var(--mono);
-    font-size: 13px;
-    padding: 24px 18px;
+    font-size: 12.5px;
+    padding: 16px;
     text-align: center;
   }
   .loading { color: var(--text-secondary); }
   .error { color: #f87171; background: var(--err-bg); }
 
   @media (max-width: 640px) {
-    .wrap { padding: 32px 16px; }
-    td, th { padding: 10px 12px; }
+    .wrap { padding: 24px 12px; }
+    td, th { padding: 6px 10px; }
     .toolbar { flex-direction: column; align-items: stretch; }
     .right-tools { justify-content: space-between; }
   }
