@@ -489,54 +489,51 @@
       <span style="color:var(--amber); font-size:12.5px; display:inline-block; margin-top:4px;">* Note: Record modification features are currently under development and not available for testing yet.</span>
     </div>
   </section>
-
-<!-- SECTION 03: HARDWARE ADAPTABILITY & FUTURE DEPLOYMENT -->
+<!-- SECTION 03: DEVICE COMPATIBILITY & OPTIMAL TESTING EXPERIENCE -->
   <section class="section-block">
     <div class="section-header">
       <div class="header-left">
         <span class="section-number">03</span>
-        <h2 class="section-title">Hardware Compatibility & Target Specifications</h2>
+        <h2 class="section-title">Device Compatibility & Testing Guide</h2>
       </div>
     </div>
 
     <div class="instruction-card">
-      This prototype features responsive UI logic engineered for multi-device compatibility. It can be tested immediately on standard office PCs, tablets, or mobile browsers, while natively prepared for future integration with rugged industrial hardware upon system adoption.
+      This DWI system is standardly designed and developed for <strong>15.6″–21.5″ Industrial Touch PCs (1080p)</strong> and <strong>10.5″–12.9″ Rugged Tablets / iPads</strong>. For the best evaluation experience, testing on <strong>desktop PCs, laptops, tablets, or iPads</strong> is highly recommended. 
+      <br><span style="color:var(--amber); font-size:12.5px; display:inline-block; margin-top:4px;">* Note: Testing on smartphones is functional, but the user experience may be less optimal due to compact screen sizes.</span>
     </div>
 
     <div class="device-grid">
       <div class="device-card">
         <div class="device-title">
-          <span>Target: Fixed Loading Stations</span>
-          <span class="tag">Future Spec</span>
+          <span>Standard Fixed Terminal</span>
         </div>
         <div class="device-desc">
           <strong>15.6″ – 21.5″ Industrial Touch PC (1080p)</strong><br>
-          Designed for VESA-mounted station displays. High-contrast dark mode prevents reflection under shop-floor lighting, and generous touch padding supports gloved operations.
+          High-contrast dark mode minimizes glare, while enlarged touch controls easily support gloved operations at loading stations.
         </div>
       </div>
 
       <div class="device-card">
         <div class="device-title">
-          <span>Target: Mobile Inspection</span>
-          <span class="tag">Future Spec</span>
+          <span>Standard Mobile Terminal</span>
         </div>
         <div class="device-desc">
           <strong>10.5″ – 12.9″ Rugged Tablet / iPad</strong><br>
-          Optimized for line walkthroughs and quality checks. Standard 1000px+ landscape width displays the full 4-column layout, with native browser camera integration (<code>capture="environment"</code>) for immediate defect reporting.
+          Standard 1000px+ landscape width displays the full 4-column layout, featuring direct rear camera activation for taking immediate photo evidence of defective workpieces.
         </div>
       </div>
     </div>
 
     <div class="instruction-card" style="margin-bottom:0;">
-      <strong style="color:var(--text-primary); font-size:13px;">Built-in Responsive Adaptations:</strong>
+      <strong style="color:var(--text-primary); font-size:13px;">Interface & Interaction Features:</strong>
       <ul class="responsive-list">
-        <li><strong>Mobile Devices:</strong> Auto-collapsing single-column layout, direct camera invocation, QR-code cross-device sync, and numeric keypad optimization.</li>
-        <li><strong>Industrial Tablets & Touchscreens:</strong> <code>max-w-5xl</code> viewport boundary, enlarged touch targets for gloved work, and scalable vector (SVG) engineering diagrams (ASTM A385 & pipe venting).</li>
-        <li><strong>Desktop & Office Terminals:</strong> Centered layout to prevent visual fatigue on widescreen monitors, full physical keyboard/Tab navigation, and auto-centered interactive modals.</li>
+        <li><strong>Desktops & Laptops:</strong> Centered layout prevents visual fatigue on widescreen monitors, supporting full physical keyboard and Tab navigation.</li>
+        <li><strong>Tablets & iPads:</strong> Structured <code>max-w-5xl</code> layout, glove-friendly touch targets, and crisp vector (SVG) engineering diagrams (ASTM A385 & pipe venting).</li>
+        <li><strong>Smartphones (Sub-optimal):</strong> Auto-collapsing layout, single-touch camera access, QR-code pairing, and touch-optimized numeric keypads.</li>
       </ul>
     </div>
-  </section> 
-
+  </section>
   <footer>
     Source: <code id="srcUrl"></code>/rest/v1/employees — read-only, anon key.
   </footer>
