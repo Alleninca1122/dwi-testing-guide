@@ -170,39 +170,63 @@
     padding-top: 8px;
   }
 
-  /* List & Grid Formatting for Roles */
-  .role-grid {
+  /* List & Grid Formatting for Roles & Devices */
+  .role-grid, .device-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 10px;
     margin-bottom: 12px;
   }
 
-  .role-card {
+  .role-card, .device-card {
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 10px 12px;
+    padding: 12px;
   }
 
-  .role-name {
+  .role-name, .device-title {
     font-family: var(--mono);
     font-size: 13px;
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .role-desc {
+  .role-desc, .device-desc {
     font-size: 12.5px;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
-  .role-desc em {
+  .role-desc em, .device-desc em {
     color: var(--text-primary);
     font-style: normal;
     font-weight: 500;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-family: var(--sans);
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .responsive-list {
+    margin: 8px 0 0 0;
+    padding-left: 18px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+  }
+
+  .responsive-list li {
+    margin-bottom: 4px;
   }
 
   .toolbar {
@@ -387,7 +411,7 @@
     td, th { padding: 6px 10px; }
     .toolbar { flex-direction: column; align-items: stretch; }
     .right-tools { justify-content: space-between; }
-    .role-grid { grid-template-columns: 1fr; }
+    .role-grid, .device-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -463,6 +487,53 @@
     <div class="instruction-card" style="margin-bottom:0;">
       All edits are appended as new entries for auditability. The original record remains visible with a red strikethrough, followed by the revised entry displaying the change reason and editor's Employee ID.<br>
       <span style="color:var(--amber); font-size:12.5px; display:inline-block; margin-top:4px;">* Note: Record modification features are currently under development and not available for testing yet.</span>
+    </div>
+  </section>
+
+  <!-- SECTION 03: RECOMMENDED DEVICES -->
+  <section class="section-block">
+    <div class="section-header">
+      <div class="header-left">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Recommended Devices for Testing</h2>
+      </div>
+    </div>
+
+    <div class="instruction-card">
+      This application is engineered with a fully responsive layout that dynamically adapts to mobile, tablet, and desktop interfaces. For shop-floor operations and testing, screen sizes between <strong>11″ and 21.5″ (1080p)</strong> offer the optimal visual layout and touch experience.
+    </div>
+
+    <div class="device-grid">
+      <div class="device-card">
+        <div class="device-title">
+          <span>Fixed Station Touchscreen</span>
+          <span class="tag">Top Pick</span>
+        </div>
+        <div class="device-desc">
+          <strong>15.6″ – 21.5″ Industrial PC (1080p)</strong><br>
+          Ideal for fixed rack stations. Anti-glare matte screens handle shop-floor lighting well, while large touch targets accommodate gloved operations.
+        </div>
+      </div>
+
+      <div class="device-card">
+        <div class="device-title">
+          <span>Mobile Inspection Tablet</span>
+          <span class="tag">Top Pick</span>
+        </div>
+        <div class="device-desc">
+          <strong>10.5″ – 12.9″ Rugged Tablet / iPad</strong><br>
+          Landscape mode fits the 4-column layout perfectly without horizontal scrolling. Native rear-camera integration allows direct photo uploads of workpiece defects.
+        </div>
+      </div>
+    </div>
+
+    <div class="instruction-card" style="margin-bottom:0;">
+      <strong style="color:var(--text-primary); font-size:13px;">Responsive Design Features:</strong>
+      <ul class="responsive-list">
+        <li><strong>Mobile Smart Adaptation:</strong> Single-column layout, direct camera capture (<code>capture="environment"</code>), QR-code pairing, and touch-friendly numeric inputs.</li>
+        <li><strong>Tablet & Touch Optimization:</strong> Structured <code>max-w-5xl</code> layout, oversized touch buttons for gloves, and crisp vector SVG diagrams (ASTM A385 & venting).</li>
+        <li><strong>Desktop / All-in-One PC:</strong> Centered layout prevents eye fatigue on wide screens, with full physical keyboard navigation and centered modal dialogs.</li>
+      </ul>
     </div>
   </section>
 
