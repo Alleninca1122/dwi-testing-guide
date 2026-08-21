@@ -262,6 +262,7 @@
     border-radius: 999px;
   }
   .badge.available { background: var(--ok-bg); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+  .badge.occupied { background: var(--amber-bg); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.25); }
   .badge .bdot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 
   .role-grid {
@@ -460,7 +461,7 @@
       <div class="account-card">
         <div>
           <span class="role-tag operator">Operator Credentials</span>
-          <div class="account-title">Operator IDs: <code>3001</code>, <code>3002</code>, <code>3003</code>,<code>3004</code>,<code>3005</code>,<code>3006</code></div>
+          <div class="account-title">Operator IDs: <span id="operatorIdsList">Loading…</span></div>
           <div class="account-desc">Log in with standard operator role credentials. Assigned to the 48-hour record modification window tier. </div>
         </div>
         <div class="account-footer">
@@ -473,7 +474,7 @@
       <div class="account-card">
         <div>
           <span class="role-tag supervisor">Supervisor Credential</span>
-          <div class="account-title">Employee IDs: <code>2001</code>,<code>2002</code></div>
+          <div class="account-title">Employee IDs: <span id="supervisorIdsList">Loading…</span></div>
           <div class="account-desc">Log in with supervisor role credentials. Assigned to the 2-week (336h) record modification window tier.</div>
         </div>
         <div class="account-footer">
@@ -486,7 +487,7 @@
       <div class="account-card">
         <div>
           <span class="role-tag admin">Admin Credential</span>
-          <div class="account-title">Employee ID: <code>1001</code></div>
+          <div class="account-title">Employee ID: <span id="adminIdsList">Loading…</span></div>
           <div class="account-desc">Log in with administrator role credentials. Assigned to the 10-week (1680h) record modification window tier.</div>
         </div>
         <div class="account-footer">
@@ -594,23 +595,60 @@
       dot.className = "dot live";
       statusText.textContent = "Supabase Live";
 
+      renderQuickAccess(rows);
       renderTable(rows);
 
     }catch(err){
       dot.className = "dot err";
       statusText.textContent = "Connection Failed";
       tableContent.innerHTML = `<div style="color:#f87171; padding:10px; font-size:12px;">Could not connect to database: ${err.message}</div>`;
+      ["operatorIdsList","supervisorIdsList","adminIdsList"].forEach(id => {
+        document.getElementById(id).innerHTML = `<span style="color:#f87171;">unavailable</span>`;
+      });
     }
+  }
+
+  // An account is "available" (unclaimed) if it still has the default demo PIN.
+  // Once a tester changes it, the PIN itself is never shown here — only the
+  // resulting Available/Occupied state.
+  function isAvailable(r){
+    return r.pin === "1234";
+  }
+
+  function renderQuickAccess(rows){
+    const byRole = { operator: [], supervisor: [], admin: [] };
+    rows.forEach(r => {
+      if(isAvailable(r) && byRole[r.role]){
+        byRole[r.role].push(r.employee_id);
+      }
+    });
+
+    const targets = {
+      operator: "operatorIdsList",
+      supervisor: "supervisorIdsList",
+      admin: "adminIdsList"
+    };
+
+    Object.keys(targets).forEach(role => {
+      const el = document.getElementById(targets[role]);
+      const ids = byRole[role].sort((a,b) => a - b).slice(0, 2);
+      el.innerHTML = ids.length
+        ? ids.map(id => `<code>${id}</code>`).join(", ")
+        : `<span style="color:var(--text-muted); font-weight:400;">none currently available</span>`;
+    });
   }
 
   function renderTable(rows){
     const rowsHtml = rows.map(r => {
+      const available = isAvailable(r);
+      const badgeClass = available ? "available" : "occupied";
+      const badgeLabel = available ? "Available" : "Occupied";
       return `<tr>
         <td>${r.employee_id}</td>
         <td style="text-transform:capitalize;">${r.role}</td>
         <td>
-          <span class="badge available">
-            <span class="bdot"></span>Ready
+          <span class="badge ${badgeClass}">
+            <span class="bdot"></span>${badgeLabel}
           </span>
         </td>
       </tr>`;
