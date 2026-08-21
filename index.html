@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galvanizing DWI — Shop-Floor Portal Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -443,8 +443,8 @@
   <!-- HEADER -->
   <header>
     <div class="eyebrow">Enterprise Shop-Floor Portal · Live Demo</div>
-    <h1>Galvanizing DWI 数字作业指导与生产日志系统</h1>
-    <p class="subtitle">本系统专为热镀锌车间打造，旨在实现作业指导数字化、质量追溯实时化与工序防错自动化。</p>
+    <h1>Galvanizing DWI — Digital Work Instructions & Production Log</h1>
+    <p class="subtitle">Engineered for hot-dip galvanizing plant operations, enabling digitized guidance, real-time quality traceability, and automated process error-proofing.</p>
   </header>
 
   <!-- SECTION 01: DEMO ACCOUNTS -->
@@ -452,64 +452,64 @@
     <div class="section-header">
       <div class="header-left">
         <span class="section-number">01</span>
-        <h2 class="section-title">快速体验账号 (Quick Access)</h2>
+        <h2 class="section-title">Quick Access Accounts</h2>
       </div>
       <div class="status-pill">
         <span class="dot" id="statusDot"></span>
-        <span id="statusText">数据库连接中...</span>
+        <span id="statusText">Connecting...</span>
       </div>
     </div>
     
     <div class="instruction-card">
-      请选择以下任一演示角色工号进行登录测试。初始 PIN 均为 <code>1234</code>（首次登录将自动提示设置新 PIN）：
+      Select any sample Employee ID below to log in and test the Stage 01 load entry form. Initial PIN for all demo accounts is <code>1234</code> (you will be prompted to set a new PIN on first login):
     </div>
 
     <div class="account-grid">
       <!-- Operator Card -->
       <div class="account-card">
         <div>
-          <span class="role-tag operator">Operator · 操作工</span>
-          <div class="account-title">工号：<code>1001</code></div>
-          <div class="account-desc">体验日常挂料录入、载荷防错校验、安全阻断与流程电子签核。</div>
+          <span class="role-tag operator">Operator Credential</span>
+          <div class="account-title">Employee ID: <code>1001</code></div>
+          <div class="account-desc">Log in with standard operator role credentials. Assigned to the 48-hour record modification window tier.</div>
         </div>
         <div class="account-footer">
-          <span>初始 PIN: <code>1234</code></span>
-          <span class="badge available" id="badge-1001"><span class="bdot"></span>可用</span>
+          <span>Initial PIN: <code>1234</code></span>
+          <span class="badge available" id="badge-1001"><span class="bdot"></span>Available</span>
         </div>
       </div>
 
       <!-- Supervisor Card -->
       <div class="account-card">
         <div>
-          <span class="role-tag supervisor">Supervisor · 车间主管</span>
-          <div class="account-title">工号：<code>2001</code></div>
-          <div class="account-desc">体验生产数据复核、跨班组日志调阅、流程强制释放与异常干预。</div>
+          <span class="role-tag supervisor">Supervisor Credential</span>
+          <div class="account-title">Employee ID: <code>2001</code></div>
+          <div class="account-desc">Log in with supervisor role credentials. Assigned to the 2-week (336h) record modification window tier.</div>
         </div>
         <div class="account-footer">
-          <span>初始 PIN: <code>1234</code></span>
-          <span class="badge available" id="badge-2001"><span class="bdot"></span>可用</span>
+          <span>Initial PIN: <code>1234</code></span>
+          <span class="badge available" id="badge-2001"><span class="bdot"></span>Available</span>
         </div>
       </div>
 
       <!-- Admin Card -->
       <div class="account-card">
         <div>
-          <span class="role-tag admin">Admin · 系统管理员</span>
-          <div class="account-title">工号：<code>3001</code></div>
-          <div class="account-desc">体验系统参数全局配置、用户权限调阅与完整追溯审计。</div>
+          <span class="role-tag admin">Admin Credential</span>
+          <div class="account-title">Employee ID: <code>3001</code></div>
+          <div class="account-desc">Log in with administrator role credentials. Assigned to the 10-week (1680h) record modification window tier.</div>
         </div>
         <div class="account-footer">
-          <span>初始 PIN: <code>1234</code></span>
-          <span class="badge available" id="badge-3001"><span class="bdot"></span>可用</span>
+          <span>Initial PIN: <code>1234</code></span>
+          <span class="badge available" id="badge-3001"><span class="bdot"></span>Available</span>
         </div>
       </div>
     </div>
 
     <!-- Toggleable full list -->
     <details class="full-list-toggle">
-      <summary>查看 Supabase 数据库全部工号实时状态 (Live Table)</summary>
+      <summary>View real-time status of all employee IDs in Supabase (Live Table)</summary>
       <div id="tableContent" class="table-container">
-        <div style="padding:10px; font-size:12px; color:var(--text-muted);">正在同步云端数据库...</div>
+        <div style="padding:10px; font-size:12px; color:var(--text-muted);">Synchronizing with cloud database...</div>
       </div>
     </details>
   </section>
@@ -519,39 +519,39 @@
     <div class="section-header">
       <div class="header-left">
         <span class="section-number">02</span>
-        <h2 class="section-title">三级权限与安全追溯架构 (RBAC & Audit Trail)</h2>
+        <h2 class="section-title">RBAC & Edit Permission Tiers</h2>
       </div>
-      <span class="feature-badge">合规防篡改</span>
+      <span class="feature-badge">Audit-Ready</span>
     </div>
 
     <div class="role-grid">
       <div class="role-card">
         <div class="role-header">
-          <span class="role-name">Operator 操作工</span>
-          <span class="time-window">48 小时窗口</span>
+          <span class="role-name">Operator</span>
+          <span class="time-window">48h Window</span>
         </div>
-        <div class="role-desc">仅可修正<em>本人提交</em>的记录，超时自动封存，保障工序及时纠偏。</div>
+        <div class="role-desc">Can modify <em>own submissions</em> within 48 hours; automatically locked afterward to ensure timely shop-floor correction.</div>
       </div>
       <div class="role-card">
         <div class="role-header">
-          <span class="role-name">Supervisor 车间主管</span>
-          <span class="time-window">2 周窗口 (336h)</span>
+          <span class="role-name">Supervisor</span>
+          <span class="time-window">2-Week Window (336h)</span>
         </div>
-        <div class="role-desc">可对<em>班组任意记录</em>进行异常干预、提权修正与流程复核。</div>
+        <div class="role-desc">Can perform managerial overrides, elevated corrections, and shift log sign-offs across <em>any entry</em>.</div>
       </div>
       <div class="role-card">
         <div class="role-header">
-          <span class="role-name">Admin 系统管理员</span>
-          <span class="time-window">10 周窗口 (1680h)</span>
+          <span class="role-name">Admin</span>
+          <span class="time-window">10-Week Window (1680h)</span>
         </div>
-        <div class="role-desc">具备全局历史记录调阅与系统参数配置最高权限。</div>
+        <div class="role-desc">Holds full authority for historical data inspection, audit exports, and system-wide parameter configuration.</div>
       </div>
     </div>
 
     <div class="audit-card">
-      <div class="audit-title">🔒 工业级增量追溯机制 (Immutable Audit Log)</div>
+      <div class="audit-title">🔒 Immutable Incremental Audit Logging</div>
       <div class="audit-desc">
-        所有记录修改均以增量追加方式存储。原始记录保留红色划线（Strikethrough）可见，修正记录紧随其后并自动附带修改原因与修改人 Employee ID，完全符合 ISO 质量管理体系审计要求。
+        All record modifications are stored as incremental appends. The original record remains visible with a red strikethrough, followed by the revised entry displaying the change reason and editor's Employee ID, fully compliant with ISO quality management audit standards.
       </div>
     </div>
   </section>
@@ -561,22 +561,22 @@
     <div class="section-header">
       <div class="header-left">
         <span class="section-number">03</span>
-        <h2 class="section-title">推荐运行设备 (Target Deployment Devices)</h2>
+        <h2 class="section-title">Target Deployment Devices</h2>
       </div>
     </div>
 
     <div class="device-grid">
       <div class="device-card">
-        <div class="device-title">🖥️ 车间工业一体机</div>
-        <div class="device-desc">标准支持：<strong>15.6″ – 21.5″ 工业触摸屏 (1080p)</strong>。界面针对车间戴手套大触控区域与高对比度环境深度优化。</div>
+        <div class="device-title">🖥️ Industrial Touch PCs</div>
+        <div class="device-desc">Standard support: <strong>15.6″ – 21.5″ Touchscreen PCs (1080p)</strong>. Interface is optimized for glove-friendly touch targets and high-contrast plant environments.</div>
       </div>
       <div class="device-card">
-        <div class="device-title">📱 移动巡检平板</div>
-        <div class="device-desc">标准支持：<strong>10.5″ – 12.9″ 三防平板 / iPad</strong>。支持现场巡检、防错校验与快速电子签核。</div>
+        <div class="device-title">📱 Mobile Rugged Tablets</div>
+        <div class="device-desc">Standard support: <strong>10.5″ – 12.9″ Rugged Tablets / iPads</strong>. Ideal for floor inspections, error-proofing checks, and rapid electronic sign-offs.</div>
       </div>
       <div class="device-card">
-        <div class="device-title">💻 桌面办公电脑</div>
-        <div class="device-desc">全面兼容：<strong>PC / Mac 浏览器</strong>。支持矢状工程图纸高清晰缩放与大批量数据快速调阅。</div>
+        <div class="device-title">💻 Desktop Workstations</div>
+        <div class="device-desc">Fully compatible: <strong>PC / Mac Browsers</strong>. Supports crisp vector diagram zooming and large-scale data reviews.</div>
       </div>
     </div>
   </section>
@@ -591,7 +591,6 @@
   const SUPABASE_URL = "https://gaseaioxmxbrtarhjhdq.supabase.co";
   const ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdhc2VhaW94bXhicnRhcmhqaGRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ5NDk5MjEsImV4cCI6MjEwMDUyNTkyMX0.PQGpNrxDk_Az1SckwKFnDgX7BOaQn_79n3eLSMCmD-c";
 
-  // 修复 Footer URL 连贯显示
   document.getElementById("srcUrl").textContent = SUPABASE_URL + "/rest/v1/employees";
 
   const dot = document.getElementById("statusDot");
@@ -600,7 +599,7 @@
 
   async function fetchAccounts(){
     dot.className = "dot";
-    statusText.textContent = "数据库连接中...";
+    statusText.textContent = "Connecting...";
     try{
       const res = await fetch(`${SUPABASE_URL}/rest/v1/employees?select=employee_id,pin,role&order=employee_id.asc`, {
         headers: {
@@ -611,22 +610,19 @@
       if(!res.ok) throw new Error(`HTTP ${res.status}`);
       const rows = await res.json();
       
-      // 更新顶部状态灯
       dot.className = "dot live";
-      statusText.textContent = "Supabase 实时连接";
+      statusText.textContent = "Supabase Live";
 
-      // 渲染展开页中的完整表格
       renderTable(rows);
       
-      // 动态同步 1001/2001/3001 演示卡片的状态
       updateCardBadge("1001", rows);
       updateCardBadge("2001", rows);
       updateCardBadge("3001", rows);
 
     }catch(err){
       dot.className = "dot err";
-      statusText.textContent = "数据库连接失败";
-      tableContent.innerHTML = `<div style="color:#f87171; padding:10px; font-size:12px;">无法连接至数据库: ${err.message}</div>`;
+      statusText.textContent = "Connection Failed";
+      tableContent.innerHTML = `<div style="color:#f87171; padding:10px; font-size:12px;">Could not connect to database: ${err.message}</div>`;
     }
   }
 
@@ -636,10 +632,10 @@
     const user = rows.find(r => String(r.employee_id) === String(empId));
     if(user && user.pin !== "1234") {
       el.className = "badge occupied";
-      el.innerHTML = '<span class="bdot"></span>测试中 (Occupied)';
+      el.innerHTML = '<span class="bdot"></span>Occupied';
     } else {
       el.className = "badge available";
-      el.innerHTML = '<span class="bdot"></span>就绪 (Available)';
+      el.innerHTML = '<span class="bdot"></span>Available';
     }
   }
 
