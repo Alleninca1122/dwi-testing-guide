@@ -503,63 +503,6 @@
       <span style="color:var(--amber); font-size:12.5px;">* Note: While fully functional on smartphones, the testing experience may be less optimal due to compact screen size limitations.</span>
     </div>
   </section>
-  <!-- SECTION 04: STAGE 01 LOADING - WHAT TO EXPECT -->
-  <section class="section-block">
-    <div class="section-header">
-      <div class="header-left">
-        <span class="section-number">04</span>
-        <h2 class="section-title">Stage 01 Loading — What to Expect</h2>
-      </div>
-    </div>
-
-    <div class="instruction-card">
-      <strong>Your submissions are real.</strong> This demo is connected to the live database. Every load you submit creates real records and passes that data forward into Stage 02 / 03 / 04 of the pipeline — those stages are still in development and not open for testing yet. Please don't worry about "breaking" anything. If you see a Rack # greyed out and not selectable, that means someone has already tested with it. 
-    </div>
-
-    <div class="instruction-card">
-      <strong>The same Employee ID &amp; PIN twice.</strong> You'll enter your Employee ID and PIN twice: once to log into the portal, and again at the bottom of the form under <em>"Employee Sign-off"</em> to confirm you're responsible for the load. Use the <strong>same PIN both times</strong> — the one you set on your first login, not the original <code>1234</code>.
-    </div>
-
-    <div class="instruction-card">
-      <strong>Not everything is wired up yet.</strong> A few things in the Stage 01 form are placeholders for now — please don't be alarmed if they don't do what you'd expect:
-      <ul class="responsive-list">
-        <li><strong>Photo buttons</strong> ("Snap / Upload Photo", "Scan via Phone") in Steps 1–2 — tapping them won't actually save or upload a photo yet.</li>
-        <li>The <strong>5-Step Workflow</strong> guidance panel (PPE, weigh-in, venting, rigging, pose, handoff) is a reference checklist to read and follow physically — it isn't tied to any checkbox or field, so it won't block submission on its own.</li>
-      </ul>
-    </div>
-
-    <div class="instruction-card" style="margin-bottom:0;">
-      <strong>Two kinds of safety alerts — know the difference:</strong>
-      <ul class="responsive-list">
-        <li><span style="color:#f87171;font-weight:600;">Hard blocks (red, submit disabled):</span> total rack load over 8,000 lb, or an enclosed cavity with no venting and not drilled on site. These can't be overridden — the load must be corrected before you can submit.</li>
-        <li><span style="color:#fbbf24;font-weight:600;">Warnings (pop up on submit):</span> things like an undersized wire/chain/shackle for the weight entered. You'll see a confirmation pop-up listing them — you can review and choose to continue anyway, the same as you would on paper today.</li>
-      </ul>
-      Please try triggering both at least once during testing (e.g. overload a rack past 8,000 lb, and separately pick a wire count you know is too thin for the weight) so we know both are working as intended.
-    </div>
-  </section>
-
-  <!-- SECTION 05: SUGGESTED TEST SCENARIOS -->
-  <section class="section-block">
-    <div class="section-header">
-      <div class="header-left">
-        <span class="section-number">05</span>
-        <h2 class="section-title">Suggested Things to Try</h2>
-      </div>
-    </div>
-    <div class="instruction-card" style="margin-bottom:0;">
-      No fixed script — please explore freely. A few scenarios that would help us the most if you get to them:
-      <ul class="responsive-list">
-        <li>A normal load: pick a numbered Rack #, add one Job with one or two workpiece lines, and sign off.</li>
-        <li>A <strong>"No Rack" (crane direct)</strong> load — notice the Rack Fixture options disappear.</li>
-        <li>A numbered rack with the <strong>Hook Rack</strong> fixture, and separately a workpiece with <strong>Railing Comb Rack</strong> checked.</li>
-        <li>A workpiece where the pieces aren't all the same weight (uncheck "uniform weight") and use the weight bracket selector instead of typing a number.</li>
-        <li>More than one Job on the same Load, and more than one workpiece line inside a Job.</li>
-        <li>Add an Assistant Operator at sign-off, in addition to the mandatory Primary Operator.</li>
-        <li>Enter Min/Max Oil-Paint or Rust levels far apart, to see the mixed-corrosion warning.</li>
-        <li>After submitting a load, come back and try the <strong>Force Release</strong> flow on that same Rack #.</li>
-      </ul>
-    </div>
-  </section>
 
   <footer>
     Source: <code id="srcUrl"></code>/rest/v1/employees — read-only, anon key.
