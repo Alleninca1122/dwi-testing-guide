@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galvanizing DWI — Shop-Floor Portal Demo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -50,7 +50,6 @@
     padding: 36px 20px 48px;
   }
 
-  /* Header Section */
   header {
     margin-bottom: 28px;
     border-bottom: 1px solid var(--border);
@@ -94,7 +93,6 @@
     line-height: 1.5;
   }
 
-  /* Section Styling */
   .section-block {
     margin-bottom: 24px;
     background: var(--surface);
@@ -170,7 +168,6 @@
     font-weight: 600;
   }
 
-  /* Account Cards Grid */
   .account-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -232,7 +229,6 @@
     font-size: 11.5px;
   }
 
-  /* Status Pill & Buttons */
   .status-pill {
     display: inline-flex;
     align-items: center;
@@ -266,10 +262,8 @@
     border-radius: 999px;
   }
   .badge.available { background: var(--ok-bg); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
-  .badge.occupied { background: var(--amber-bg); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
   .badge .bdot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 
-  /* Section 02 Roles */
   .role-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -333,7 +327,6 @@
     gap: 6px;
   }
 
-  /* Section 03 Devices */
   .device-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -360,7 +353,6 @@
     line-height: 1.45;
   }
 
-  /* Toggle & Details */
   details.full-list-toggle {
     margin-top: 10px;
     background: var(--bg);
@@ -461,7 +453,7 @@
     </div>
     
     <div class="instruction-card">
-      Select any sample Employee ID below to log in and test the Stage 01 load entry form. Initial PIN for all demo accounts is <code>1234</code> (you will be prompted to set a new PIN on first login):
+      Select any sample Employee ID below to log in and test the Stage 01 load entry form. Fixed demo PIN is <code>1234</code> for all shared accounts:
     </div>
 
     <div class="account-grid">
@@ -473,8 +465,8 @@
           <div class="account-desc">Log in with standard operator role credentials. Assigned to the 48-hour record modification window tier.</div>
         </div>
         <div class="account-footer">
-          <span>Initial PIN: <code>1234</code></span>
-          <span class="badge available" id="badge-1001"><span class="bdot"></span>Available</span>
+          <span>Demo PIN: <code>1234</code></span>
+          <span class="badge available"><span class="bdot"></span>Ready</span>
         </div>
       </div>
 
@@ -486,8 +478,8 @@
           <div class="account-desc">Log in with supervisor role credentials. Assigned to the 2-week (336h) record modification window tier.</div>
         </div>
         <div class="account-footer">
-          <span>Initial PIN: <code>1234</code></span>
-          <span class="badge available" id="badge-2001"><span class="bdot"></span>Available</span>
+          <span>Demo PIN: <code>1234</code></span>
+          <span class="badge available"><span class="bdot"></span>Ready</span>
         </div>
       </div>
 
@@ -499,8 +491,8 @@
           <div class="account-desc">Log in with administrator role credentials. Assigned to the 10-week (1680h) record modification window tier.</div>
         </div>
         <div class="account-footer">
-          <span>Initial PIN: <code>1234</code></span>
-          <span class="badge available" id="badge-3001"><span class="bdot"></span>Available</span>
+          <span>Demo PIN: <code>1234</code></span>
+          <span class="badge available"><span class="bdot"></span>Ready</span>
         </div>
       </div>
     </div>
@@ -614,10 +606,6 @@
       statusText.textContent = "Supabase Live";
 
       renderTable(rows);
-      
-      updateCardBadge("1001", rows);
-      updateCardBadge("2001", rows);
-      updateCardBadge("3001", rows);
 
     }catch(err){
       dot.className = "dot err";
@@ -626,28 +614,14 @@
     }
   }
 
-  function updateCardBadge(empId, rows) {
-    const el = document.getElementById(`badge-${empId}`);
-    if(!el) return;
-    const user = rows.find(r => String(r.employee_id) === String(empId));
-    if(user && user.pin !== "1234") {
-      el.className = "badge occupied";
-      el.innerHTML = '<span class="bdot"></span>Occupied';
-    } else {
-      el.className = "badge available";
-      el.innerHTML = '<span class="bdot"></span>Available';
-    }
-  }
-
   function renderTable(rows){
     const rowsHtml = rows.map(r => {
-      const isOcc = r.pin !== "1234";
       return `<tr>
         <td>${r.employee_id}</td>
         <td style="text-transform:capitalize;">${r.role}</td>
         <td>
-          <span class="badge ${isOcc ? 'occupied' : 'available'}">
-            <span class="bdot"></span>${isOcc ? 'Occupied' : 'Available'}
+          <span class="badge available">
+            <span class="bdot"></span>Ready
           </span>
         </td>
       </tr>`;
