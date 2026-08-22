@@ -638,7 +638,7 @@
       const el = document.getElementById(targets[role]);
       const ids = byRole[role].sort((a,b) => a - b).slice(0, 3);
       el.innerHTML = ids.length
-        ? ids.map(id => `<code>${id}</code>`).join(", ") + " " + moreLink
+        ? ids.map(id => `<code>${id}</code>`).join(", ") + ", " + moreLink
         : `<span style="color:var(--text-muted); font-weight:400;">none currently available</span>`;
     });
   }
