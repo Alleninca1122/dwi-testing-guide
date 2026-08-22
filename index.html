@@ -222,7 +222,7 @@
   }
   .role-tag.operator { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
   .role-tag.supervisor { background: var(--amber-bg); color: var(--amber); }
-  .role-tag.admin { background: var(--purple-bg); color: var(--purple); }
+  .role-tag.manager { background: var(--purple-bg); color: var(--purple); }
 
   .account-title {
     font-size: 14px;
@@ -461,7 +461,7 @@
   <!-- HEADER -->
   <header>
     <div class="eyebrow">Shop-Floor Portal · Demo</div>
-    <h1>DEMO Galvanizing DWI User Testing Guide</h1>
+    <h1>Demo Galvanizing DWI User Testing Guide</h1>
   </header>
 
   <!-- SECTION 01: DEMO ACCOUNTS -->
@@ -510,13 +510,13 @@
         </div>
       </div>
 
-      <!-- Admin Card -->
+      <!-- Manager Card -->
       <div class="account-card">
         <div>
-          <span class="role-tag admin">Admin Credential</span>
+          <span class="role-tag manager">Manager Credential</span>
           <div class="account-title">Employee ID:</div>
-          <div class="id-row" id="adminIdsList">Loading…</div>
-          <div class="account-desc">Log in with administrator role credentials. Assigned to the 10-week (1680h) record modification window tier.</div>
+          <div class="id-row" id="managerIdsList">Loading…</div>
+          <div class="account-desc">Log in with manager role credentials. Assigned to the 10-week (1680h) record modification window tier.</div>
         </div>
         <div class="account-footer">
           <span>Initial PIN: <code>1234</code></span>
@@ -602,7 +602,7 @@
       dot.className = "dot err";
       statusText.textContent = "Connection Failed";
       tableContent.innerHTML = `<div style="color:#f87171; padding:10px; font-size:12px;">Could not connect to database: ${err.message}</div>`;
-      ["operatorIdsList","supervisorIdsList","adminIdsList"].forEach(id => {
+      ["operatorIdsList","supervisorIdsList","managerIdsList"].forEach(id => {
         document.getElementById(id).innerHTML = `<span style="color:#f87171;">unavailable</span>`;
       });
     }
@@ -616,17 +616,21 @@
   }
 
   function renderQuickAccess(rows){
-    const byRole = { operator: [], supervisor: [], admin: [] };
+    const byRole = { operator: [], supervisor: [], manager: [] };
     rows.forEach(r => {
-      if(isAvailable(r) && byRole[r.role]){
-        byRole[r.role].push(r.employee_id);
+      // Roles come back from Supabase capitalized (Operator/Supervisor/
+      // Manager) - normalize to lowercase before using as a byRole key, or
+      // this lookup silently misses every row and every card shows "none".
+      const key = (r.role || "").toLowerCase();
+      if(isAvailable(r) && byRole[key]){
+        byRole[key].push(r.employee_id);
       }
     });
 
     const targets = {
       operator: "operatorIdsList",
       supervisor: "supervisorIdsList",
-      admin: "adminIdsList"
+      manager: "managerIdsList"
     };
 
     const moreLink = `<a href="#" class="more-link" onclick="expandFullList(event)">more</a>`;
