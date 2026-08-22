@@ -168,6 +168,24 @@
     font-weight: 600;
   }
 
+  /* "more" link — same visual treatment as the <code> pills next to it */
+  .more-link {
+    font-family: var(--mono);
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.12);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .more-link:hover {
+    background: rgba(56, 189, 248, 0.22);
+    text-decoration: underline;
+  }
+
   .account-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -360,6 +378,7 @@
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 8px 12px;
+    scroll-margin-top: 20px;
   }
 
   details.full-list-toggle summary {
@@ -498,7 +517,7 @@
     </div>
 
     <!-- Toggleable full list -->
-    <details class="full-list-toggle">
+    <details class="full-list-toggle" id="fullListDetails">
       <summary>View real-time status of all employee IDs in Supabase (Live Table)</summary>
       <div id="tableContent" class="table-container">
         <div style="padding:10px; font-size:12px; color:var(--text-muted);">Synchronizing with cloud database...</div>
@@ -541,6 +560,15 @@
   const dot = document.getElementById("statusDot");
   const statusText = document.getElementById("statusText");
   const tableContent = document.getElementById("tableContent");
+
+  // Expands the full employee-ID table and scrolls it into view.
+  // Wired up to the "more" link rendered next to each role's sample IDs.
+  function expandFullList(e){
+    if(e) e.preventDefault();
+    const details = document.getElementById("fullListDetails");
+    details.open = true;
+    details.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   async function fetchAccounts(){
     dot.className = "dot";
@@ -592,11 +620,13 @@
       admin: "adminIdsList"
     };
 
+    const moreLink = `<a href="#" class="more-link" onclick="expandFullList(event)">more</a>`;
+
     Object.keys(targets).forEach(role => {
       const el = document.getElementById(targets[role]);
       const ids = byRole[role].sort((a,b) => a - b).slice(0, 2);
       el.innerHTML = ids.length
-        ? ids.map(id => `<code>${id}</code>`).join(", ")
+        ? ids.map(id => `<code>${id}</code>`).join(", ") + " " + moreLink
         : `<span style="color:var(--text-muted); font-weight:400;">none currently available</span>`;
     });
   }
