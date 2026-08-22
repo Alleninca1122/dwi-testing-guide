@@ -228,7 +228,16 @@
     font-size: 14px;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 6px;
+    margin-bottom: 0;
+  }
+
+  .id-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    margin-bottom: 12px;
   }
 
   .account-desc {
@@ -480,7 +489,8 @@
       <div class="account-card">
         <div>
           <span class="role-tag operator">Operator Credentials</span>
-          <div class="account-title">Employee IDs: <span id="operatorIdsList">Loading…</span></div>
+          <div class="account-title">Employee IDs:</div>
+          <div class="id-row" id="operatorIdsList">Loading…</div>
           <div class="account-desc">Log in with standard operator role credentials. Assigned to the 48-hour record modification window tier. </div>
         </div>
         <div class="account-footer">
@@ -493,7 +503,8 @@
       <div class="account-card">
         <div>
           <span class="role-tag supervisor">Supervisor Credential</span>
-          <div class="account-title">Employee IDs: <span id="supervisorIdsList">Loading…</span></div>
+          <div class="account-title">Employee IDs:</div>
+          <div class="id-row" id="supervisorIdsList">Loading…</div>
           <div class="account-desc">Log in with supervisor role credentials. Assigned to the 2-week (336h) record modification window tier.</div>
         </div>
         <div class="account-footer">
@@ -506,7 +517,8 @@
       <div class="account-card">
         <div>
           <span class="role-tag admin">Admin Credential</span>
-          <div class="account-title">Employee ID: <span id="adminIdsList">Loading…</span></div>
+          <div class="account-title">Employee ID:</div>
+          <div class="id-row" id="adminIdsList">Loading…</div>
           <div class="account-desc">Log in with administrator role credentials. Assigned to the 10-week (1680h) record modification window tier.</div>
         </div>
         <div class="account-footer">
